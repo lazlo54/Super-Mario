@@ -19,12 +19,12 @@ body {
 			create : create,
 			update : update
 		}, false, false);
-
+		
 		function preload() {
 
 			//  We need this because the assets are on github pages
 			//  Remove the next 2 lines if running locally
-			this.load.baseURL = 'https://ioniodi.github.io/Super-Mario/';
+			this.load.baseURL = 'https://lazlo54.github.io/Super-Mario/';
 			this.load.crossOrigin = 'anonymous';
 
 			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
@@ -79,10 +79,18 @@ body {
 			player.animations.add('walkRight', [ 1, 2, 3 ], 10, true);
 			player.animations.add('walkLeft', [ 8, 9, 10 ], 10, true);
 			player.goesRight = true;
-
+			
 			game.camera.follow(player);
 
 			cursors = game.input.keyboard.createCursorKeys();
+			
+			this.score = 0;
+			this.scoreText = game.add.text(10, 10, "", {
+           			font:"bold 16px Arial",
+            			fill: "#acacac"
+			});
+			this.scoreText.fixedToCamera = true;
+			this.scoreUpdate();
 		}
 
 		function update() {
@@ -123,6 +131,10 @@ body {
 			}
 		}
 
+		function scoreUpdate(){
+			this.scoreText.text = "Score: " + this.score;
+		}
+		
 		function coinOverlap(player, coin) {
 			coin.kill();
 		}
@@ -135,6 +147,7 @@ body {
 				player.body.velocity.y = -80;
 				game.time.events.add(Phaser.Timer.SECOND, function() {
 					goomba.kill();
+					this.score++;
 				});
 			} else {
 				player.frame = 6;

@@ -84,14 +84,14 @@ body {
 
 			cursors = game.input.keyboard.createCursorKeys();
 			
-			this.score = 0;
-			this.scoreText = game.add.text(10, 10, "", {
+			score.score = 0;
+			score.scoreText = game.add.text(10, 10, "", {
            			font:"bold 16px Arial",
             			fill: "#acacac"
 			});
-			this.scoreText.fixedToCamera = true;
-			this.scoreText.cameraOffset.setTo(200, 500);
-			this.updateScore();
+			score.scoreText.fixedToCamera = true;
+			score.scoreText.cameraOffset.setTo(200, 500);
+			score.updateScore();
 		}
 
 		function update() {
@@ -132,8 +132,8 @@ body {
 			}
 		}
 
-		updateScore:function(){
-			this.scoreText.text = "Score: " + this.score;
+		function updateScore(){
+			score.scoreText.text = "Score: " + this.score;
 		}
 		
 		function coinOverlap(player, coin) {

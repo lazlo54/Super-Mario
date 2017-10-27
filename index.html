@@ -85,10 +85,11 @@ body {
 			cursors = game.input.keyboard.createCursorKeys();
 			
 			this.score = 0;
-			this.scoreText = game.add.text(10, 10, "Score", {
+			this.scoreText = game.add.text(10, 10, "", {
            			font:"bold 16px Arial",
             			fill: "#acacac"
 			});
+			this.scoreText.fixedToCamera = true;
 			this.scoreUpdate();
 		}
 

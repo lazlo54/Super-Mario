@@ -91,7 +91,7 @@ body {
 			});
 			this.scoreText.fixedToCamera = true;
 			this.scoreText.cameraOffset.setTo(200, 500);
-			this.scoreUpdate();
+			this.updateScore();
 		}
 
 		function update() {
@@ -132,7 +132,7 @@ body {
 			}
 		}
 
-		function scoreUpdate(){
+		updateScore: function(){
 			this.scoreText.text = "Score: " + this.score;
 		}
 		

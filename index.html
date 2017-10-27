@@ -85,11 +85,19 @@ body {
 			cursors = game.input.keyboard.createCursorKeys();
 			
 			score = 0;
+			lifes = 3;
+			
 			scoreText = game.add.text(10, 10, "Score : 0", {
            			font:"bold 16px Arial",
             			fill: "#ffffff"
 			});
 			scoreText.fixedToCamera = true;
+			
+			lifesText = game.add.text(50, 10, 'Lifes : 3' {
+           			font:"bold 16px Arial",
+            			fill: "#ffffff"
+			});
+			lifesText.fixedToCamera = true;
 // 			updateScore();
 		}
 
@@ -98,7 +106,11 @@ body {
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
-
+			
+			if(lifes===0){
+			   gameOver();
+			}
+			
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
 				if (cursors.left.isDown) {
@@ -146,12 +158,7 @@ body {
 					goomba.kill();
 				});
 			} else {
-				player.frame = 6;
-				player.body.enable = false;
-				player.animations.stop();
-				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-					game.paused = true;
-				});
+				loseLife();
 			}
 		}
 		
@@ -160,6 +167,19 @@ body {
 			scoreText.setText('Score : ' + score);
 		}
 		
+		function loseLife(){
+			lifes --;
+			lifesText.setText('Lives : ' + lifes);
+		}
+		
+		function gameOver(){
+			player.frame = 6;
+			player.body.enable = false;
+			player.animations.stop();
+			game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+				game.paused = true;
+			});
+		}
 // 		function updateScore(){
 // 			scoreText.setText("Score: " + score);
 // 		}

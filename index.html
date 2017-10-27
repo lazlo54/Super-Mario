@@ -90,7 +90,7 @@ body {
             			fill: "#ffffff"
 			});
 			scoreText.fixedToCamera = true;
-			updateScore();
+// 			updateScore();
 		}
 
 		function update() {
@@ -157,11 +157,12 @@ body {
 		
 		function gotAkill(){
 			score +=100;
+			scoreText.setText('Score : ' + score);
 		}
 		
-		function updateScore(){
-			scoreText.setText("Score: " + score);
-		}
+// 		function updateScore(){
+// 			scoreText.setText("Score: " + score);
+// 		}
 	</script>
 </body>
 </html>

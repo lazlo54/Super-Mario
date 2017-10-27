@@ -90,7 +90,6 @@ body {
             			fill: "#acacac"
 			});
 			score.scoreText.fixedToCamera = true;
-			score.scoreText.cameraOffset.setTo(200, 500);
 			score.updateScore();
 		}
 
@@ -133,7 +132,7 @@ body {
 		}
 
 		function updateScore(){
-			score.scoreText.text = "Score: " + this.score;
+			this.scoreText.text = "Score: " + this.score;
 		}
 		
 		function coinOverlap(player, coin) {

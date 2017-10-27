@@ -84,13 +84,13 @@ body {
 
 			cursors = game.input.keyboard.createCursorKeys();
 			
-			score = 4;
+			score = 0;
 			scoreText = game.add.text(10, 10, "fgfb1", {
            			font:"bold 16px Arial",
             			fill: "#ffffff"
 			});
 			scoreText.fixedToCamera = true;
-// 			updateScore();
+			updateScore();
 		}
 
 		function update() {
@@ -144,7 +144,6 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND, function() {
 					goomba.kill();
 					score += 100;
-					scoreText.setText('Score: ' + score);
 				});
 			} else {
 				player.frame = 6;
@@ -156,9 +155,9 @@ body {
 			}
 		}
 		
-// 		function updateScore(){
-// 			scoreText.setText("Score: " + this.score);
-// 		}
+		function updateScore(){
+			scoreText.setText("Score: " + score);
+		}
 	</script>
 </body>
 </html>

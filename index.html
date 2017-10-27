@@ -85,7 +85,7 @@ body {
 			cursors = game.input.keyboard.createCursorKeys();
 			
 			score = 0;
-			lifes = 3;
+			lives = 3;
 			
 			scoreText = game.add.text(10, 10, "Score : 0", {
            			font:"bold 16px Arial",
@@ -93,11 +93,11 @@ body {
 			});
 			scoreText.fixedToCamera = true;
 			
-			lifesText = game.add.text(50, 10, 'Lifes : 3' {
+			livesText = game.add.text(50, 10, 'Lifes : 3' {
            			font:"bold 16px Arial",
             			fill: "#ffffff"
 			});
-			lifesText.fixedToCamera = true;
+			livesText.fixedToCamera = true;
 // 			updateScore();
 		}
 
@@ -106,10 +106,8 @@ body {
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
-			
-			if(lifes == 0){
-			   gameOver();
-			}else(player.body.enable) {
+
+			if(player.body.enable) {
 				player.body.velocity.x = 0;
 				if (cursors.left.isDown) {
 					player.body.velocity.x = -90;
@@ -139,6 +137,9 @@ body {
 						player.frame = 12;
 				}
 			}
+			if(lives === 0){
+				gameOver();
+			}
 		}
 		
 		function coinOverlap(player, coin) {
@@ -165,9 +166,9 @@ body {
 			scoreText.setText('Score : ' + score);
 		}
 		
-		function loseLife(){
-			lifes --;
-			lifesText.setText('Lives : ' + lifes);
+		function loseLive(){
+			lives --;
+			livesText.setText('Lives : ' + lives);
 		}
 		
 		function gameOver(){

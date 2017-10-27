@@ -89,11 +89,11 @@ body {
 			cursors = game.input.keyboard.createCursorKeys();
 			
 			this.score = 0;
-			this.scoreUpdate();
 			this.scoreText = game.add.text(10, 10, "-", {
            			font:"bold 16px Arial",
             			fill: "#acacac"
 			});
+			this.scoreUpdate();
 		}
 
 		function update() {

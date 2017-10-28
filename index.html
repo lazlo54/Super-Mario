@@ -74,14 +74,14 @@ body {
 			
 			score = 0;
 			scoreText = game.add.text(10, 10, "Score : 0", {
-           			font:"bold 12px Arial",
+           			font:"bold 8px Arial",
             			fill: "#ffffff"
 			});
 			scoreText.fixedToCamera = true;
 			
 			coinsC = 0;
-			coinsText = game.add.text(10,20, 'Coins = 0',{ 
-				font:"bold 12px Arial",
+			coinsText = game.add.text(10,15, 'Coins : 0',{ 
+				font:"bold 8px Arial",
             			fill: "#ffffff"
 			});
 			coinsText.fixedToCamera = true;
@@ -151,7 +151,7 @@ body {
 		}
 		function gotCoins(){
 			coinsC +=1;
-			coinsText.setText('Coins : ' + coins);
+			coinsText.setText('Coins : ' + coinsC);
 		}
 	</script>
 </body>

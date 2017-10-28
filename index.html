@@ -88,7 +88,7 @@ body {
 			});
 			coinsText.fixedToCamera = true;
 			//	Lives counter
-			livesC = 3;
+			livesC = localStorage.getItem("lives") == null ? 3 : localStorage.getItem("lives");
 			livesText = game.add.text(210,10 ,'lives : 3',{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
@@ -167,6 +167,7 @@ body {
 		function lostAlife(){
 			livesC -=1;
 			livesText.setText('lives : ' + livesC);
+			localStorage.setItem("lives",livesC);
 		}
 		function theEnd(){
 			player.frame = 6;

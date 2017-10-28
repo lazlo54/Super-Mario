@@ -145,10 +145,12 @@ body {
 					goomba.kill();
 				});
 			} else {
-				if(livesC === 0){
-					theEnd();
-				}else{
-					lostAlife();
+				game.time.events.add(Phaser.Timer.SECOND, function() {
+					if(livesC === 0){
+						theEnd();
+					}else{
+						lostAlife();
+					}
 				}
 			}
 		}

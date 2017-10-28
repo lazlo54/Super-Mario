@@ -80,7 +80,7 @@ body {
 			scoreText.fixedToCamera = true;
 			
 			coins = 0;
-			coinText = game.add.text(11,10, 'coins = 0',{ 
+			coinText = game.add.text(10,15, 'coins = 0',{ 
 				font:"bold 12px Arial",
             			fill: "#ffffff"
 			});
@@ -122,8 +122,8 @@ body {
 		}
 		
 		function coinOverlap(player, coin) {
-			gotCoin();
 			coin.kill();
+			gotCoin();
 		}
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {

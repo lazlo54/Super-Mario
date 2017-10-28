@@ -89,7 +89,7 @@ body {
 			coinsText.fixedToCamera = true;
 			//	Lives counter
 			livesC = 3;
-			livesText = game.add.text(250,10 ,'lives : 3',{ 
+			livesText = game.add.text(210,10 ,'lives : 3',{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
@@ -145,13 +145,7 @@ body {
 					goomba.kill();
 				});
 			} else {
-				/*player.frame = 6;
-				player.body.enable = false;
-				player.animations.stop();
-				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-					game.paused = true;
-				});*/
-				if(livesC == 0){
+				if(livesC === 0){
 					theEnd();
 				}else{
 					lostAlife();

@@ -93,7 +93,7 @@ body {
 			});
 			scoreText.fixedToCamera = true;
 			
-			livesText = game.add.text(50, 10, 'Lifes : 3' {
+			livesText = game.add.text(5, 5, 'Lifes : 3' {
            			font:"bold 16px Arial",
             			fill: "#ffffff"
 			});
@@ -169,7 +169,7 @@ body {
 		}
 		
 		function loseLive(){
-			lives --;
+			lives -=1;
 			livesText.setText('Lives : ' + lives);
 		}
 		

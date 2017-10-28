@@ -72,6 +72,7 @@ body {
 			game.camera.follow(player);
 			cursors = game.input.keyboard.createCursorKeys();
 			
+			//	Score counter
 			score = 0;
 			scoreText = game.add.text(10, 10, "Score : 0", {
            			font:"bold 10px Arial",
@@ -79,12 +80,20 @@ body {
 			});
 			scoreText.fixedToCamera = true;
 			
+			//	Coin counter
 			coinsC = 0;
 			coinsText = game.add.text(10,20, 'Coins : 0',{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
 			coinsText.fixedToCamera = true;
+			//	Lives counter
+			livesC = 3;
+			livesText = game.add.text(50,10 ,'lives : 3',{ 
+				font:"bold 10px Arial",
+            			fill: "#ffffff"
+			});
+			livesText.fixedToCamera = true;
 		}
 		function update() {
 			game.physics.arcade.collide(player, layer);
@@ -136,6 +145,7 @@ body {
 					goomba.kill();
 				});
 			} else {
+				lostAlife();
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
@@ -152,6 +162,10 @@ body {
 		function gotCoins(){
 			coinsC +=1;
 			coinsText.setText('Coins : ' + coinsC);
+		}
+		function lostAlife(){
+			livesC -=1;
+			livesText.setText('lives : ' + livesC);
 		}
 	</script>
 </body>

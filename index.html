@@ -21,47 +21,37 @@ body {
 		}, false, false);
 		
 		function preload() {
-
 			//  We need this because the assets are on github pages
 			//  Remove the next 2 lines if running locally
 			this.load.baseURL = 'https://lazlo54.github.io/Super-Mario/';
 			this.load.crossOrigin = 'anonymous';
-
 			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
 					16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
-
 			this.load.tilemap('level', 'assets/super_mario_map.json', null,
 					Phaser.Tilemap.TILED_JSON);
 		}
-
 		function create() {
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
 			game.scale.pageAlignHorizontally = true;
 			game.scale.pageAlignVertically = true
 			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 			game.physics.startSystem(Phaser.Physics.ARCADE);
-
 			game.stage.backgroundColor = '#5c94fc';
-
 			map = game.add.tilemap('level');
 			map.addTilesetImage('tiles', 'tiles');
 			map.setCollisionBetween(3, 12, true, 'solid');
-
 			map.createLayer('background');
-
 			layer = map.createLayer('solid');
 			layer.resizeWorld();
-
 			coins = game.add.group();
 			coins.enableBody = true;
 			map.createFromTiles(2, null, 'coin', 'stuff', coins);
 			coins.callAll('animations.add', 'animations', 'spin',
 					[ 0, 0, 1, 2 ], 3, true);
 			coins.callAll('animations.play', 'animations', 'spin');
-
 			goombas = game.add.group();
 			goombas.enableBody = true;
 			map.createFromTiles(1, null, 'goomba', 'stuff', goombas);
@@ -71,7 +61,6 @@ body {
 			goombas.setAll('body.bounce.x', 1);
 			goombas.setAll('body.velocity.x', -20);
 			goombas.setAll('body.gravity.y', 500);
-
 			player = game.add.sprite(16, game.world.height - 48, 'mario');
 			game.physics.arcade.enable(player);
 			player.body.gravity.y = 370;
@@ -81,32 +70,21 @@ body {
 			player.goesRight = true;
 			
 			game.camera.follow(player);
-
 			cursors = game.input.keyboard.createCursorKeys();
 			
 			score = 0;
-			lives = 3;
-			
-			scoreText = game.add.text(10, 10, "Score : 0", {
+			scoreText = game.add.text(10, 10, "fgfb1", {
            			font:"bold 16px Arial",
             			fill: "#ffffff"
 			});
 			scoreText.fixedToCamera = true;
-			
-			livesText = game.add.text(5, 5, 'Lifes : 3' {
-           			font:"bold 16px Arial",
-            			fill: "#ffffff"
-			});
-			livesText.fixedToCamera = true;			
 		}
-
 		function update() {
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
-
-			if(player.body.enable) {
+			if (player.body.enable) {
 				player.body.velocity.x = 0;
 				if (cursors.left.isDown) {
 					player.body.velocity.x = -90;
@@ -123,12 +101,10 @@ body {
 					else
 						player.frame = 7;
 				}
-
 				if (cursors.up.isDown && player.body.onFloor()) {
 					player.body.velocity.y = -190;
 					player.animations.stop();
 				}
-
 				if (player.body.velocity.y != 0) {
 					if (player.goesRight)
 						player.frame = 5;
@@ -141,7 +117,6 @@ body {
 		function coinOverlap(player, coin) {
 			coin.kill();
 		}
-
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {
 				gotAkill();
@@ -159,7 +134,6 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					game.paused = true;
 				});
-// 				loseLife();
 			}
 		}
 		
@@ -167,20 +141,6 @@ body {
 			score +=100;
 			scoreText.setText('Score : ' + score);
 		}
-		
-		function loseLive(){
-			lives -=1;
-			livesText.setText('Lives : ' + lives);
-		}
-		
-		/*function gameIsover(){
-			player.frame = 6;
-			player.body.enable = false;
-			player.animations.stop();
-			game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-				game.paused = true;
-			});
-		}*/
 	</script>
 </body>
 </html>

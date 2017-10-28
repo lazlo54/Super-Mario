@@ -138,7 +138,7 @@ body {
 				}
 			}
 			if(lives === 0){
-				gameOver();
+				gameIsover();
 			}
 		}
 		
@@ -171,7 +171,7 @@ body {
 			livesText.setText('Lives : ' + lives);
 		}
 		
-		function gameOver(){
+		function gameIsover(){
 			player.frame = 6;
 			player.body.enable = false;
 			player.animations.stop();

@@ -97,8 +97,7 @@ body {
            			font:"bold 16px Arial",
             			fill: "#ffffff"
 			});
-			livesText.fixedToCamera = true;
-// 			updateScore();
+			livesText.fixedToCamera = true;			
 		}
 
 		function update() {
@@ -137,9 +136,6 @@ body {
 						player.frame = 12;
 				}
 			}
-// 			if(lives === 0){
-// 				gameIsover();
-// 			}
 		}
 		
 		function coinOverlap(player, coin) {
@@ -157,7 +153,11 @@ body {
 					goomba.kill();
 				});
 			} else {
-				loseLife();
+				if(lives === 0){
+					gameIsover();
+				}else{
+					loseLife();
+				}
 			}
 		}
 		
@@ -179,9 +179,6 @@ body {
 				game.paused = true;
 			});
 		}
-// 		function updateScore(){
-// 			scoreText.setText("Score: " + score);
-// 		}
 	</script>
 </body>
 </html>

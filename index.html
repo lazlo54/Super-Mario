@@ -135,24 +135,24 @@ body {
 			gotCoins();
 		}
 		function goombaOverlap(player, goomba) {
-			if (player.body.touching.down) {
-				gotAkill();
-				goomba.animations.stop();
-				goomba.frame = 2;
-				goomba.body.enable = false;
-				player.body.velocity.y = -80;
-				game.time.events.add(Phaser.Timer.SECOND, function() {
-					goomba.kill();
-				});
-			} else {
-				game.time.events.add(Phaser.Timer.SECOND, function() {
+			game.time.events.add(Phaser.Timer.SECOND, function() {
+				if (player.body.touching.down) {
+					gotAkill();
+					goomba.animations.stop();
+					goomba.frame = 2;
+					goomba.body.enable = false;
+					player.body.velocity.y = -80;
+					game.time.events.add(Phaser.Timer.SECOND, function() {
+						goomba.kill();
+					});
+				} else {
 					if(livesC === 0){
 						theEnd();
 					}else{
 						lostAlife();
 					}
-				});
-			}
+				}
+			});
 		}
 		
 		function gotAkill(){

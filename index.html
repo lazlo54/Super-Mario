@@ -78,6 +78,13 @@ body {
             			fill: "#ffffff"
 			});
 			scoreText.fixedToCamera = true;
+			
+			coins = 0;
+			coinText = game.add.text(11,10, 'coins = 0',{ 
+				font:"bold 12px Arial",
+            			fill: "#ffffff"
+			});
+			coinText.fixedToCamera = true;
 		}
 		function update() {
 			game.physics.arcade.collide(player, layer);
@@ -115,6 +122,7 @@ body {
 		}
 		
 		function coinOverlap(player, coin) {
+			gotCoin();
 			coin.kill();
 		}
 		function goombaOverlap(player, goomba) {
@@ -140,6 +148,10 @@ body {
 		function gotAkill(){
 			score +=100;
 			scoreText.setText('Score : ' + score);
+		}
+		function gotCoin(){
+			coins +=1;
+			coinText.setText('Coins : ' + coins);
 		}
 	</script>
 </body>

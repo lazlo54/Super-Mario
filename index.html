@@ -153,11 +153,13 @@ body {
 					goomba.kill();
 				});
 			} else {
-				if(lives == 0){
-					gameIsover();
-				}else{
-					loseLife();
-				}
+				player.frame = 6;
+				player.body.enable = false;
+				player.animations.stop();
+				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+					game.paused = true;
+				});
+				loseLife();
 			}
 		}
 		
@@ -171,14 +173,14 @@ body {
 			livesText.setText('Lives : ' + lives);
 		}
 		
-		function gameIsover(){
+		/*function gameIsover(){
 			player.frame = 6;
 			player.body.enable = false;
 			player.animations.stop();
 			game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 				game.paused = true;
 			});
-		}
+		}*/
 	</script>
 </body>
 </html>

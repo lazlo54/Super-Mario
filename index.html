@@ -131,6 +131,7 @@ body {
 				if (cursors.up.isDown && player.body.onFloor()) {
 					player.body.velocity.y = -190;
 					player.animations.stop();
+					jumpS.play();
 				}
 				if (player.body.velocity.y != 0) {
 					if (player.goesRight)
@@ -168,10 +169,12 @@ body {
 		function gotAkill(){
 			score +=100;
 			scoreText.setText('Score : ' + score);
+			stompS.play();
 		}
 		function gotCoins(){
 			coinsC +=1;
 			coinsText.setText('Coins : ' + coinsC);
+			coinS.play();
 		}
 		function lostAlife(){
 			livesC -=1;
@@ -185,6 +188,7 @@ body {
 			game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 				game.paused = true;
 			});
+			bgm.pause();
 		}
 	</script>
 </body>

@@ -99,6 +99,11 @@ body {
 			});
 			livesText.fixedToCamera = true;
 			
+			bgm = game.add.audio('bgm');
+			coinS = game.add.audio('coinS');
+			jumpS = game.add.audio('jumpS');
+			stompS = game.add.audio('stompS');
+			
 			bgm.play();
 		}
 		function update() {
@@ -151,7 +156,7 @@ body {
 					goomba.kill();
 				});
 			} else {
-				if(livesC === 0){
+				if(livesC <= 0){
 					theEnd();
 				}else{
 					lostAlife();

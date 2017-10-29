@@ -32,6 +32,10 @@ body {
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 			this.load.tilemap('level', 'assets/super_mario_map.json', null,
 					Phaser.Tilemap.TILED_JSON);
+			this.load.audio('bgm','audio/bgm.ogg');
+			this.load.audio('coinS','audio/coin.wav');
+			this.load.audio('jumpS','audio/jump.wav');
+			this.load.audio('stompS','audio/stomp.wav');
 		}
 		function create() {
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
@@ -94,6 +98,8 @@ body {
             			fill: "#ffffff"
 			});
 			livesText.fixedToCamera = true;
+			
+			bgm.play();
 		}
 		function update() {
 			game.physics.arcade.collide(player, layer);

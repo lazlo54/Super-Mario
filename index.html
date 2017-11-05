@@ -92,7 +92,7 @@ body {
 			});
 			coinsText.fixedToCamera = true;
 			//	Lives counter
-			livesC = localStorage.getItem("lives") == null ? 3 : localStorage.getItem("lives");
+			livesC = 3;
 			livesText = game.add.text(210,10 ,'lives : 3',{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
@@ -190,6 +190,11 @@ body {
 				game.paused = true;
 			});
 			bgm.pause();
+			itends = game.add.text(120,120 ,'Game Over',{ 
+				font:"bold 23px Arial",
+            			fill: "#ffffff"
+			});
+			itends.fixedToCamera = true;
 		}
 	</script>
 </body>

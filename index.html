@@ -93,6 +93,7 @@ body {
 			coinsText.fixedToCamera = true;
 			//	Lives counter
 			livesC = 3;
+			livesC = localStorage.getItem("livesC") == null ? 3 : localStorage.getItem("livesC");
 			livesText = game.add.text(210,10 ,'lives : 3',{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"

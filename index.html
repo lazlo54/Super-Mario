@@ -179,6 +179,7 @@ body {
 		}
 		function lostAlife(){
 			livesC -=1;
+			localStorage.setItem("livesC",livesC);
 			livesText.setText('lives : ' + livesC);
 		}
 		function theEnd(){
@@ -189,7 +190,7 @@ body {
 				game.paused = true;
 			});
 			bgm.pause();
-			itends = game.add.text(120,120 ,'Game Over',{ 
+			itends = game.add.text(80,80 ,'Game Over',{ 
 				font:"bold 23px Arial",
             			fill: "#ffffff"
 			});

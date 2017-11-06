@@ -36,6 +36,7 @@ body {
 			this.load.audio('coinS','audio/coin.wav');
 			this.load.audio('jumpS','audio/jump.wav');
 			this.load.audio('stompS','audio/stomp.wav');
+			this.load.audio('lnl','audio/lock-n-load.wav');
 		}
 		
 		var livesC = 3;
@@ -110,8 +111,10 @@ body {
 			coinS = game.add.audio('coinS');
 			jumpS = game.add.audio('jumpS');
 			stompS = game.add.audio('stompS');
+			lnl = game.add.audio('lnl');
 			
 			//	Background game music
+			lnl.play();
 			bgm.play();
 			bgm.loopFull(0.3);
 			bgm.volume(0.3);

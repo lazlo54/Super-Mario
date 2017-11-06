@@ -28,13 +28,11 @@ body {
 			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
 					16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
-			this.load.spritesheet('mario1', 'assets/soldier-mario.png', 16, 16);
+			this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 			this.load.tilemap('level', 'assets/super_mario_map.json', null,
 					Phaser.Tilemap.TILED_JSON);
-			this.load.audio('csbgm','audio/cs-go-bgm.wav');
-			this.load.audio('lnl','audio/lock-n-load.wav');
-			this.load.audio('deathS','audio/mission-failed.wav');
+			this.load.audio('bgm','audio/bgm.ogg');
 			this.load.audio('coinS','audio/coin.wav');
 			this.load.audio('jumpS','audio/jump.wav');
 			this.load.audio('stompS','audio/stomp.wav');
@@ -72,7 +70,7 @@ body {
 			goombas.setAll('body.bounce.x', 1);
 			goombas.setAll('body.velocity.x', -20);
 			goombas.setAll('body.gravity.y', 500);
-			player = game.add.sprite(16, game.world.height - 48, 'mario1');
+			player = game.add.sprite(16, game.world.height - 48, 'mario');
 			game.physics.arcade.enable(player);
 			player.body.gravity.y = 370;
 			player.body.collideWorldBounds = true;
@@ -108,17 +106,14 @@ body {
 			livesText.fixedToCamera = true;
 			
 			//	Sounds
-			csbgm = game.add.audio('bgm');
-			lnl = game.add.audio('lnl');
-			deathS = game.add.audio('deathS');
+			bgm = game.add.audio('bgm');
 			coinS = game.add.audio('coinS');
 			jumpS = game.add.audio('jumpS');
 			stompS = game.add.audio('stompS');
 			
 			//	Background game music
-			lnl.play();
-			csbgm.play();
-// 			csbgm.loopFull(0.6);
+			bgm.play();
+			bgm.loopFull(0.6);
 		}
 		function update() {
 			game.physics.arcade.collide(player, layer);
@@ -173,13 +168,12 @@ body {
 			} else {
 				if(livesC > 1){
 					lostAlife();
-					csbgm.stop();
+					bgm.stop();
 					game.state.restart();
 				}else{
 					theEnd();
 				}
 			}
-
 		}
 		
 		function gotAkill(){
@@ -203,8 +197,7 @@ body {
 			game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 				game.paused = true;
 			});
-			csbgm.pause();
-			deathS.play();
+			bgm.pause();
 			itends = game.add.text(80,80 ,'Game Over',{ 
 				font:"bold 23px Arial",
             			fill: "#ffffff"

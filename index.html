@@ -28,11 +28,11 @@ body {
 			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
 					16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
-			this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
+			this.load.spritesheet('mario1', 'assets/soldier-mario.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 			this.load.tilemap('level', 'assets/super_mario_map.json', null,
 					Phaser.Tilemap.TILED_JSON);
-			this.load.audio('bgm','audio/cs-go-bgm.wav');
+			this.load.audio('csbgm','audio/cs-go-bgm.wav');
 			this.load.audio('lnl','audio/lock-n-load.wav');
 			this.load.audio('deathS','audio/mission-failed.wav');
 			this.load.audio('coinS','audio/coin.wav');
@@ -72,7 +72,7 @@ body {
 			goombas.setAll('body.bounce.x', 1);
 			goombas.setAll('body.velocity.x', -20);
 			goombas.setAll('body.gravity.y', 500);
-			player = game.add.sprite(16, game.world.height - 48, 'mario');
+			player = game.add.sprite(16, game.world.height - 48, 'mario1');
 			game.physics.arcade.enable(player);
 			player.body.gravity.y = 370;
 			player.body.collideWorldBounds = true;
@@ -108,7 +108,7 @@ body {
 			livesText.fixedToCamera = true;
 			
 			//	Sounds
-			bgm = game.add.audio('bgm');
+			csbgm = game.add.audio('bgm');
 			lnl = game.add.audio('lnl');
 			deathS = game.add.audio('deathS');
 			coinS = game.add.audio('coinS');
@@ -117,8 +117,8 @@ body {
 			
 			//	Background game music
 			lnl.play();
-			bgm.play();
-// 			bgm.loopFull(0.6);
+			csbgm.play();
+// 			csbgm.loopFull(0.6);
 		}
 		function update() {
 			game.physics.arcade.collide(player, layer);
@@ -173,7 +173,7 @@ body {
 			} else {
 				if(livesC > 1){
 					lostAlife();
-					bgm.stop();
+					csbgm.stop();
 					game.state.restart();
 				}else{
 					theEnd();
@@ -203,7 +203,7 @@ body {
 			game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 				game.paused = true;
 			});
-			bgm.pause();
+			csbgm.pause();
 			deathS.play();
 			itends = game.add.text(80,80 ,'Game Over',{ 
 				font:"bold 23px Arial",

@@ -43,6 +43,12 @@ body {
 		var score = 0;
 		
 		function create() {
+			//	Sounds
+			bgm = game.add.audio('bgm');
+			coinS = game.add.audio('coinS');
+			jumpS = game.add.audio('jumpS');
+			stompS = game.add.audio('stompS');
+			
 			//	Background game music
 			bgm.play();
 			bgm.loopFull(0.1);
@@ -109,12 +115,6 @@ body {
             			fill: "#ffffff"
 			});
 			livesText.fixedToCamera = true;
-			
-			//	Sounds
-			bgm = game.add.audio('bgm');
-			coinS = game.add.audio('coinS');
-			jumpS = game.add.audio('jumpS');
-			stompS = game.add.audio('stompS');
 		}
 		function update() {
 			game.physics.arcade.collide(player, layer);

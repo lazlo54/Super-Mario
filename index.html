@@ -167,6 +167,7 @@ body {
 			} else {
 				if(livesC > 1){
 					lostAlife();
+					bgm.stop();
 					game.state.restart();
 				}else{
 					theEnd();

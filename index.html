@@ -43,17 +43,6 @@ body {
 		var score = 0;
 		
 		function create() {
-			//	Sounds
-			bgm = game.add.audio('bgm');
-			coinS = game.add.audio('coinS');
-			jumpS = game.add.audio('jumpS');
-			stompS = game.add.audio('stompS');
-			
-			//	Background game music
-			bgm.play();
-			bgm.loopFull(0.1);
-			bgm.volume(0.1);
-			
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
 			game.scale.pageAlignHorizontally = true;
 			game.scale.pageAlignVertically = true
@@ -115,6 +104,17 @@ body {
             			fill: "#ffffff"
 			});
 			livesText.fixedToCamera = true;
+			
+				//	Sounds
+			bgm = game.add.audio('bgm');
+			coinS = game.add.audio('coinS');
+			jumpS = game.add.audio('jumpS');
+			stompS = game.add.audio('stompS');
+			
+			//	Background game music
+			bgm.play();
+			bgm.loopFull(0.3);
+			bgm.volume(0.3);
 		}
 		function update() {
 			game.physics.arcade.collide(player, layer);

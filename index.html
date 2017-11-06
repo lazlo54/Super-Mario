@@ -37,6 +37,11 @@ body {
 			this.load.audio('jumpS','audio/jump.wav');
 			this.load.audio('stompS','audio/stomp.wav');
 		}
+		
+		var LivesC = 3;
+		var coinsC = 0;
+		var score = 0;
+		
 		function create() {
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
 			game.scale.pageAlignHorizontally = true;
@@ -77,7 +82,7 @@ body {
 			cursors = game.input.keyboard.createCursorKeys();
 			
 			//	Score counter
-			score = 0;
+			
 			scoreText = game.add.text(10, 10, "Score : 0", {
            			font:"bold 10px Arial",
             			fill: "#ffffff"
@@ -85,25 +90,28 @@ body {
 			scoreText.fixedToCamera = true;
 			
 			//	Coin counter
-			coinsC = 0;
+			
 			coinsText = game.add.text(10,20, 'Coins : 0',{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
 			coinsText.fixedToCamera = true;
 			//	Lives counter
-			livesC = localStorage.getItem("livesC") == null ? 3 : localStorage.getItem("livesC");
+			
+			
 			livesText = game.add.text(210,10 ,'lives : 3',{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
 			livesText.fixedToCamera = true;
 			
+			//	Sounds
 			bgm = game.add.audio('bgm');
 			coinS = game.add.audio('coinS');
 			jumpS = game.add.audio('jumpS');
 			stompS = game.add.audio('stompS');
 			
+			//	Background game music
 			bgm.play();
 		}
 		function update() {
@@ -179,7 +187,6 @@ body {
 		}
 		function lostAlife(){
 			livesC -=1;
-			localStorage.setItem("livesC",livesC);
 			livesText.setText('lives : ' + livesC);
 		}
 		function theEnd(){

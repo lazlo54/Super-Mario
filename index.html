@@ -28,11 +28,13 @@ body {
 			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
 					16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
-			this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
+			this.load.spritesheet('mario', 'assets/soldier-mario.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 			this.load.tilemap('level', 'assets/super_mario_map.json', null,
 					Phaser.Tilemap.TILED_JSON);
-			this.load.audio('bgm','audio/bgm.ogg');
+			this.load.audio('bgm','audio/cs-go-bgm.mp3');
+			this.load.audio('lnl','audio/lock-n-load.mp3');
+			this.load.audio('lnl','audio/mission-failed.mp3');
 			this.load.audio('coinS','audio/coin.wav');
 			this.load.audio('jumpS','audio/jump.wav');
 			this.load.audio('stompS','audio/stomp.wav');
@@ -107,12 +109,16 @@ body {
 			
 			//	Sounds
 			bgm = game.add.audio('bgm');
+			lnl = game.add.audio('lnl');
+			deathS = game.add.audio('deathS');
 			coinS = game.add.audio('coinS');
 			jumpS = game.add.audio('jumpS');
 			stompS = game.add.audio('stompS');
 			
 			//	Background game music
+			lnl.play();
 			bgm.play();
+			bgm.loopFull(0.6);
 		}
 		function update() {
 			game.physics.arcade.collide(player, layer);
@@ -198,6 +204,7 @@ body {
 				game.paused = true;
 			});
 			bgm.pause();
+			deathS.play();
 			itends = game.add.text(80,80 ,'Game Over',{ 
 				font:"bold 23px Arial",
             			fill: "#ffffff"

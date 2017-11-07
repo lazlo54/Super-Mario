@@ -25,13 +25,13 @@ body {
 			//  Remove the next 2 lines if running locally
 			this.load.baseURL = 'https://lazlo54.github.io/Super-Mario/';
 			this.load.crossOrigin = 'anonymous';
-			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
-					16);
+			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/soldier-mario.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
-			this.load.tilemap('level', 'assets/super_mario_map.json', null,
-					Phaser.Tilemap.TILED_JSON);
+			this.load.tilemap('level', 'assets/mario_map.json', null,Phaser.Tilemap.TILED_JSON);
+			this.load.spritesheet('ammo_crate', 'assets/ammo-crate.png', 16,16);
+			
 			this.load.audio('bgm','audio/cs-go-bgm.ogg');
 			this.load.audio('coinS','audio/coin.wav');
 			this.load.audio('jumpS','audio/jump.wav');
@@ -82,6 +82,15 @@ body {
 			
 			game.camera.follow(player);
 			cursors = game.input.keyboard.createCursorKeys();
+			
+			//	ammo-crate/bonus
+			
+			ammo_crate = game.add.group();
+			ammo_crate.enableBody = true;
+			map.createFromTiles(22,null,'ammo_crate','stuff',ammo_crate);
+			ammo_crate.callAll('animations.add', 'animations', 'shine', [0,1,2],3,true);
+			ammo_crate.callAll('animations.play','animations','shine');
+			ammo_crate.setAll('body.immovable',true);
 			
 			//	Score counter
 			

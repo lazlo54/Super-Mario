@@ -37,6 +37,7 @@ body {
 			this.load.audio('jumpS','audio/jump.wav');
 			this.load.audio('stompS','audio/stomp.wav');
 			this.load.audio('lnl','audio/lock-n-load.wav');
+			this.load.audio('deathS','audio/mission-failed.wav');
 		}
 		
 		var livesC = 3;
@@ -112,6 +113,7 @@ body {
 			jumpS = game.add.audio('jumpS');
 			stompS = game.add.audio('stompS');
 			lnl = game.add.audio('lnl');
+			deathS = game.add.audio('deathS');
 			
 			//	Background game music
 			lnl.play();
@@ -202,6 +204,7 @@ body {
 				game.paused = true;
 			});
 			bgm.pause();
+			deathS.play();
 			itends = game.add.text(80,80 ,'Game Over',{ 
 				font:"bold 23px Arial",
             			fill: "#ffffff"

@@ -87,7 +87,7 @@ body {
 			
 			ammo_crate = game.add.group();
 			ammo_crate.enableBody = true;
-			map.createFromTiles(22,null,'ammo_crate','stuff',ammo_crate);
+			map.createFromTiles(1,null,'ammo_crate','solid',ammo_crate);
 			ammo_crate.callAll('animations.add', 'animations', 'shine', [0,1,2],3,true);
 			ammo_crate.callAll('animations.play','animations','shine');
 			ammo_crate.setAll('body.immovable',true);

@@ -27,7 +27,7 @@ body {
 			this.load.crossOrigin = 'anonymous';
 			
 			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,16);
-			this.load.spritesheet('ammo','assets/ammo.png',16,16);
+			this.load.spritesheet('ammoSprite2','assets/ammoSprite.png',16,16);
 			this.load.spritesheet('ammoCrate', 'assets/ammoCrate.png', 16,16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/soldier-mario.png', 16, 16);
@@ -142,6 +142,10 @@ body {
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
+			
+			game.physics.arcade.collide(player, ammoCrate, ammoCrateOverlap);
+			game.physics.arcade.collide(ammo, player, ammoOverlap);
+
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
 				if (cursors.left.isDown) {
@@ -171,6 +175,23 @@ body {
 						player.frame = 12;
 				}
 			}
+		}
+		
+		function ammoCrateOverlap(player, ammoCrate){
+			if (cursors.up.isDown & player.body.touching.down) {
+				jumpsnd.play();
+				player.body.velocity.y = -190;
+				player.animations.stop();
+			}	
+			 if (player.body.touching.up & ammoCrate.frame!=3) {
+// 				mysteryboxhitsnd.play();
+				ammoCrate.animations.stop();
+				ammoCrate.frame=3;
+				ammoSprite = game.make.sprite(ammoCrate.x, ammoCrate.y-15, 'ammoSprite')
+				ammo.addChild(ammoSprite);																
+				ammoSprite.animations.add('spawning', [1,2,3,4,5,6,7],8,false);
+				ammoSprite.animations.play('spawning');
+				game.physics.arcade.enable(ammoSprite);
 		}
 		
 		function coinOverlap(player, coin) {

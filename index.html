@@ -45,6 +45,7 @@ body {
 		var livesC = 3;
 		var coinsC = 0;
 		var score = 0;
+		var ammoC = 0;
 		
 		function create() {
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
@@ -114,14 +115,21 @@ body {
             			fill: "#ffffff"
 			});
 			coinsText.fixedToCamera = true;
+			
 			//	Lives counter
-			
-			
+
 			livesText = game.add.text(210,10 ,'lives : '+ livesC,{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
 			livesText.fixedToCamera = true;
+			
+			//	ammo
+			ammoText = game.add.text(210,20 , 'ammo : '+ ammoC,
+				font:"bold 10px Arial",
+            			fill: "#ffffff"
+			});
+			ammoText.fixedToCamera = true;
 			
 				//	Sounds
 			bgm = game.add.audio('bgm');
@@ -194,6 +202,11 @@ body {
 				game.physics.arcade.enable(ammoSprite);
 		}
 		
+		function ammoOverlap(player, ammo){
+			ammoC += 30;
+			ammoText.setText('Coins : ' + ammoC);
+		}	
+			
 		function coinOverlap(player, coin) {
 			coin.kill();
 			gotCoins();

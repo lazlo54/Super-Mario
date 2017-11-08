@@ -90,7 +90,7 @@ body {
 			
 			ammoCrate = game.add.group();
 			ammoCrate.enableBody = true;
-			map.createFromTiles(200,null,'ammoCrate','stuff',ammoCrate);
+			map.createFromTiles(200,null,'ammoCrate','solid',ammoCrate);
 			ammoCrate.callAll('animations.add', 'animations', 'shine', [0,1,2],3,true);
 			ammoCrate.callAll('animations.play','animations','shine');
 			ammoCrate.setAll('body.immovable',true);

@@ -53,8 +53,17 @@
          "tilewidth":16
         }, 
         {
+         "columns":4,
          "firstgid":22,
-         "source":"Super-Mario-gh-pages\/assets\/untitled.tsx"
+         "image":"ammoCrate.png",
+         "imageheight":16,
+         "imagewidth":64,
+         "margin":0,
+         "name":"ammoCrate",
+         "spacing":0,
+         "tilecount":4,
+         "tileheight":16,
+         "tilewidth":16
         }],
  "tilewidth":16,
  "type":"map",

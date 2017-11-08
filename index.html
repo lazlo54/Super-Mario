@@ -60,6 +60,15 @@ body {
 			layer = map.createLayer('solid');
 			layer.resizeWorld();
 			
+			//	ammo-crate/bonus
+			
+			ammoCrate = game.add.group();
+			ammoCrate.enableBody = true;
+			map.createFromTiles(22,null,'ammoCrate','stuff',ammoCrate);
+			ammoCrate.callAll('animations.add', 'animations', 'shine', [0,1,2],3,true);
+			ammoCrate.callAll('animations.play','animations','shine');
+			ammoCrate.setAll('body.immovable',true);
+			
 			coins = game.add.group();
 			coins.enableBody = true;
 			map.createFromTiles(2, null, 'coin', 'stuff', coins);
@@ -85,15 +94,6 @@ body {
 			
 			game.camera.follow(player);
 			cursors = game.input.keyboard.createCursorKeys();
-			
-			//	ammo-crate/bonus
-			
-			ammoCrate = game.add.group();
-			ammoCrate.enableBody = true;
-			map.createFromTiles(200,null,'ammoCrate','stuff',ammoCrate);
-			ammoCrate.callAll('animations.add', 'animations', 'shine', [0,1,2],3,true);
-			ammoCrate.callAll('animations.play','animations','shine');
-			ammoCrate.setAll('body.immovable',true);
 			
 			//	Score counter
 			

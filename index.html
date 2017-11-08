@@ -27,6 +27,7 @@ body {
 			this.load.crossOrigin = 'anonymous';
 			
 			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,16);
+			this.load.spritesheet('ammo','assets/ammo.png',16,16);
 			this.load.spritesheet('ammoCrate', 'assets/ammoCrate.png', 16,16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/soldier-mario.png', 16, 16);
@@ -68,6 +69,9 @@ body {
 			ammoCrate.callAll('animations.add', 'animations', 'shine', [0,1,2],3,true);
 			ammoCrate.callAll('animations.play','animations','shine');
 			ammoCrate.setAll('body.immovable',true);
+			
+			ammo = game.add.group();
+			ammo.enableBody = true;
 			
 			coins = game.add.group();
 			coins.enableBody = true;

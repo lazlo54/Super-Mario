@@ -185,7 +185,8 @@ body {
 		}
 		
 		function ammoCrateOverlap(player, ammoCrate){
-			if (player.body.touching.up && ammoCrate.frame!=3) {
+			if (player.body.touching.up && ammoCrate.frame!=3) 
+			{
 				ammoCrate.animations.stop();
 				ammoCrate.frame=3;
 				ammoSprite = game.make.sprite(ammoCrate.x, ammoCrate.y-15, 'ammoSprite')
@@ -193,6 +194,7 @@ body {
 				ammoSprite.animations.add('spawn', [1,2,3,4,5,6,7],8,false);
 				ammoSprite.animations.play('spawn');
 				game.physics.arcade.enable(ammoSprite);
+			}
 		}
 		
 		function ammoOverlap(player, ammunition){

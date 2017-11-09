@@ -119,6 +119,11 @@ body {
 			weapon.fireAngle = Phaser.ANGLE_RIGHT;
 			fireButton = this.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
 			
+			info = game.add.text(15,200,'Press "spacebar" to shoot'{
+           			font:"bold 10px Arial",
+            			fill: "#ffffff"
+			});)
+			
 			//	Score counter			
 			scoreText = game.add.text(10, 8, "Score : 0", {
            			font:"bold 10px Arial",

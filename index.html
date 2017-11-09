@@ -203,18 +203,16 @@ body {
 				}
 			}
 			//shoot
-			if(ammoC > 0){
-				if(fireButton.onDown){
-        				weapon.fire();
-					ammoC -= 1;
-					ammoText.setText('ammo : ' + ammoC);
-    				}
-			}
+			if(fireButton.onDown && ammoC > 0){
+        			weapon.fire();
+				ammoC -= 1;
+				ammoText.setText('ammo : ' + ammoC);
+    			}
 		}
 		
-// // // // 		function bulletDestroy(bullet,layer)
-// // // 		{
-// // 			bullet.kill();
+// 		function bulletDestroy(bullet,layer)
+// 		{
+//  			bullet.kill();
 // 		}
 		
 		function ammoOverlap(player, ammunition)

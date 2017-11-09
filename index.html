@@ -135,7 +135,7 @@ body {
 			
 			//	Lives counter
 			heart = game.add.image(395,7,'heart');heart.scale.setTo(1.1,1.1);
-			livesText = game.add.text(400,10 ,'lives : '+ livesC,{ 
+			livesText = game.add.text(400,10 ,' : '+ livesC,{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
@@ -305,7 +305,7 @@ body {
 		}
 		function lostAlife(){
 			livesC -=1;
-			livesText.setText('lives : ' + livesC);
+			livesText.setText(' : ' + livesC);
 		}
 		function theEnd(){
 			player.frame = 6;

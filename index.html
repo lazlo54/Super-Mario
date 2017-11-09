@@ -167,7 +167,7 @@ body {
 			game.physics.arcade.collide(player, ammoCrate, ammoCrateCollide);
 			game.physics.arcade.overlap(player, ammunition, ammoOverlap);
 			
-			game.physics.arcade.overlap(weapon.bullets, goombas,bulletDestroy);
+			game.physics.arcade.overlap(weapon.bullets, goombas , bulletDestroy);
 			
 			if (player.body.enable)
 			{
@@ -220,8 +220,8 @@ body {
     			}
 		}
 		
-		function bulletDestroy(player,goomba){
- 			weapon.kill();
+		function bulletDestroy(bullets, goomba){
+ 			bullets.kill();
 		}
 		
 		function ammoOverlap(player, ammunition)

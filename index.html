@@ -222,6 +222,14 @@ body {
 		
 		function bulletDestroy(bullets, goomba){
  			bullets.kill();
+			gotAkill();
+			goomba.animations.stop();
+			goomba.frame = 2;
+			goomba.body.enable = false;
+			player.body.velocity.y = -80;
+			game.time.events.add(Phaser.Timer.SECOND, function() {
+				goomba.kill();
+			});
 		}
 		
 		function ammoOverlap(player, ammunition)

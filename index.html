@@ -167,7 +167,8 @@ body {
 			game.physics.arcade.collide(player, ammoCrate, ammoCrateCollide);
 			game.physics.arcade.overlap(player, ammunition, ammoOverlap);
 			
-			game.physics.arcade.overlap(weapon.bullets, goombas , bulletDestroy);
+			game.physics.arcade.overlap(weapon.bullets, goombas , bulletHit);
+			game.physics.arcade.overlap(weapon.bullets, layer , bulletDestroy);
 			
 			if (player.body.enable)
 			{
@@ -220,13 +221,16 @@ body {
     			}
 		}
 		
-		function bulletDestroy(bullets, goomba){
+		function bulletDestroy(bullets,layer){
+			bullets.kill();
+		}
+		
+		function bulletHit(bullets, goomba){
  			bullets.kill();
 			gotAkill();
 			goomba.animations.stop();
 			goomba.frame = 2;
 			goomba.body.enable = false;
-			player.body.velocity.y = -80;
 			game.time.events.add(Phaser.Timer.SECOND, function() {
 				goomba.kill();
 			});

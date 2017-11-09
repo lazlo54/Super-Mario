@@ -205,11 +205,11 @@ body {
 			}
 			//shoot
 			if(fireButton.isDown && ammoC > 0){
-        			weapon.fire();
-				game.time.events.add(Phaser.Timer.SECOND/2, function() {
+				game.time.events.add(Phaser.Timer.SECOND, function() {
 					ammoC -= 1;
+					weapon.fire();
+					ammoText.setText('ammo : ' + ammoC);
 				});
-				ammoText.setText('ammo : ' + ammoC);
     			}
 		}
 		

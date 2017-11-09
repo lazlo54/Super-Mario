@@ -126,7 +126,7 @@ body {
 			
 			//	Coin counter
 			coinPic = game.add.image(5,17,'coin');coinPic.scale.setTo(1.1,1.1);
-			coinsText = game.add.text(15,20, ' : 0',{ 
+			coinsText = game.add.text(15,23, ' : 0',{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
@@ -135,7 +135,7 @@ body {
 			
 			//	Lives counter
 			heart = game.add.image(395,7,'heart');heart.scale.setTo(1.1,1.1);
-			livesText = game.add.text(400,10 ,' : '+ livesC,{ 
+			livesText = game.add.text(405,13 ,' : '+ livesC,{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
@@ -144,7 +144,7 @@ body {
 			
 			//	ammo
 			ammoPic = game.add.image(395,17,'ammoTex');ammoPic.scale.setTo(1.1,1.1);
-			ammoText = game.add.text(405,20 , ' : '+ ammoC,{
+			ammoText = game.add.text(405,23 , ' : '+ ammoC,{
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
@@ -223,7 +223,7 @@ body {
 			if(fireButton.isDown && ammoC > 0 && ableToShoot == true){
 				ammoC -= 1;
 				weapon.fire();
-				ammoText.setText('ammo : ' + ammoC);
+				ammoText.setText(' : ' + ammoC);
 				ableToShoot = false;
 				game.time.events.add(Phaser.Timer.SECOND/2, function() {
 					ableToShoot = true;

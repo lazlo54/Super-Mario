@@ -110,7 +110,7 @@ body {
 			weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
 			weapon.bulletSpeed = 600;
 			weapon.fireRate = 200;
-			weapon.trackSprite(player, 16, 5, true);
+			weapon.trackSprite(player, 16, 5, false);
 			fireButton = this.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
 			
 			//	Score counter			
@@ -165,7 +165,8 @@ body {
 			game.physics.arcade.collide(player, ammoCrate, ammoCrateCollide);
 			game.physics.arcade.overlap(player, ammunition, ammoOverlap);
 			
-// 			game.physics.arcade.collide(weapom,layer,bulletDestroy);
+			game.physics.arcade.overlap(weapom, layer,bulletDestroy);
+			
 			if (player.body.enable)
 			{
 				player.body.velocity.x = 0;
@@ -174,12 +175,14 @@ body {
 					player.body.velocity.x = -90;
 					player.animations.play('walkLeft');
 					player.goesRight = false;
+					weapon.fireAngle = 360;
 				}
 				else if (cursors.right.isDown)
 				{
 					player.body.velocity.x = 90;
 					player.animations.play('walkRight');
 					player.goesRight = true;
+					weapon.fireAngle = 0;
 				}
 				else 
 				{
@@ -215,10 +218,10 @@ body {
     			}
 		}
 		
-// 		function bulletDestroy(bullet,layer)
-// 		{
-//  			bullet.kill();
-// 		}
+		function bulletDestroy(bullet,layer)
+		{
+ 			bullet.kill();
+		}
 		
 		function ammoOverlap(player, ammunition)
 		{

@@ -148,7 +148,7 @@ body {
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
 			
-			game.physics.arcade.overlap(player, ammoCrate, ammoCrateOverlap);
+			game.physics.arcade.collide(player, ammoCrate, ammoCrateCollide);
 			game.physics.arcade.overlap(player, ammunition, ammoOverlap);
 
 			if (player.body.enable) {
@@ -188,7 +188,7 @@ body {
 			ammoText.setText('ammo : ' + ammoC);
 		}
 		
-		function ammoCrateOverlap(player, ammoCrate){
+		function ammoCrateCollide(player, ammoCrate){
 			if (player.body.touching.up && ammoCrate.frame!=3){
 				ammoCrate.animations.stop();
 				ammoCrate.frame=3;

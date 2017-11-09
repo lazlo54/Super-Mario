@@ -14,7 +14,7 @@ body {
 </head>
 <body>
 	<script type="text/javascript">
-		var game = new Phaser.Game(256, 240, Phaser.CANVAS, '', {
+		var game = new Phaser.Game(450, 240, Phaser.CANVAS, '', {
 			preload : preload,
 			create : create,
 			update : update
@@ -127,14 +127,14 @@ body {
 			coinsText.fixedToCamera = true;
 			
 			//	Lives counter
-			livesText = game.add.text(210,10 ,'lives : '+ livesC,{ 
+			livesText = game.add.text(410,10 ,'lives : '+ livesC,{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
 			livesText.fixedToCamera = true;
 			
 			//	ammo
-			ammoText = game.add.text(200,20 , 'ammo : '+ ammoC,{
+			ammoText = game.add.text(400,20 , 'ammo : '+ ammoC,{
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});

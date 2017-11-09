@@ -149,7 +149,7 @@ body {
 			game.physics.arcade.overlap(player, coins, coinOverlap);
 			
 			game.physics.arcade.collide(player, ammoCrate, ammoCrateOverlap);
-			game.physics.arcade.collide(ammunition, player, ammoOverlap);
+			game.physics.arcade.collide(player, ammunition, ammoOverlap);
 
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
@@ -182,7 +182,7 @@ body {
 			}
 		}
 				
-		function ammoOverlap(player, ammunition){
+		function ammoOverlap(player,ammunition){
 			ammunation.kill();
 			ammoC += 30;
 			ammoText.setText('ammo : ' + ammoC);
@@ -193,7 +193,7 @@ body {
 				ammoCrate.animations.stop();
 				ammoCrate.frame=3;
 				
-				ammoSprite = game.make.sprite(ammoCrate.x, ammoCrate.y-18, 'ammoSprite');
+				ammoSprite = game.make.sprite(ammoCrate.x, ammoCrate.y-16, 'ammoSprite');
 				ammunition.addChild(ammoSprite);																
 				ammoSprite.animations.add('spawn', [1,2,3,4,5,6,7],8,false);
 				ammoSprite.animations.play('spawn');

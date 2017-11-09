@@ -34,6 +34,8 @@ body {
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 			this.load.tilemap('level', 'assets/MarioMap.json', null,Phaser.Tilemap.TILED_JSON);
 			
+			this.load.image('bullet','assets/bullet.png',);
+			
 			this.load.audio('bgm','audio/cs-go-bgm.ogg');
 			this.load.audio('coinS','audio/coin.wav');
 			this.load.audio('jumpS','audio/jump.wav');
@@ -46,6 +48,8 @@ body {
 		var coinsC = 0;
 		var score = 0;
 		var ammoC = 0;
+		var weapon;
+		var fireButton;
 		
 		function create() {
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
@@ -73,6 +77,9 @@ body {
 			
 			ammunition = game.add.group();
 			ammunition.enableBody = true;
+			
+			//	weapon
+			weapon = game.add.weapon(30, 'bullet');
 			
 			coins = game.add.group();
 			coins.enableBody = true;

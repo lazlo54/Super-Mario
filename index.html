@@ -107,6 +107,7 @@ body {
 			
 			//	weapon
 			weapon = game.add.weapon(30, 'bullet');
+			weapon.enableBody = true;
 			weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
 			weapon.bulletSpeed = 600;
 			weapon.fireRate = 200;
@@ -166,7 +167,7 @@ body {
 			game.physics.arcade.collide(player, ammoCrate, ammoCrateCollide);
 			game.physics.arcade.overlap(player, ammunition, ammoOverlap);
 			
-			game.physics.arcade.overlap(weapom, goombas,bulletDestroy);
+			game.physics.arcade.overlap(this.weapom.bullets, goombas,bulletDestroy);
 			
 			if (player.body.enable)
 			{
@@ -219,8 +220,7 @@ body {
     			}
 		}
 		
-		function bulletDestroy(player,goomba)
-		{
+		function bulletDestroy(player,goomba){
  			bullet.kill();
 			goombaDead();
 		}

@@ -123,8 +123,8 @@ body {
 			scoreText.fixedToCamera = true;
 			
 			//	Coin counter
-			coinPic = game.add.image(10,20,'coin');coinPic.scale.setTo(1,1);
-			coinsText = game.add.text(10,20, ' : 0',{ 
+			coinPic = game.add.image(5,20,'coin');coinPic.scale.setTo(1,1);
+			coinsText = game.add.text(15,20, ' : 0',{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
@@ -139,7 +139,8 @@ body {
 			livesText.fixedToCamera = true;
 			
 			//	ammo
-			ammoText = game.add.text(400,20 , 'ammo : '+ ammoC,{
+			ammoPic = game.add.image(395,20,'ammoSprite');ammoPic.scale.setTo(1,1);
+			ammoText = game.add.text(405,20 , ' : '+ ammoC,{
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
@@ -244,7 +245,7 @@ body {
 		{
 			ammunition.kill();
 			ammoC += 30;
-			ammoText.setText('ammo : ' + ammoC);
+			ammoText.setText(' : ' + ammoC);
 		}
 		
 		function ammoCrateCollide(player, ammoCrate){

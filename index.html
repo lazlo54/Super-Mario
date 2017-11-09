@@ -123,12 +123,13 @@ body {
 			scoreText.fixedToCamera = true;
 			
 			//	Coin counter
-			coinPic = game.add.image(10,20,'coin');coinPic.scale.setTo(0.1,0.1);
+			coinPic = game.add.image(10,20,'coin');coinPic.scale.setTo(1,1);
 			coinsText = game.add.text(10,20, ' : 0',{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
 			coinsText.fixedToCamera = true;
+			coinPic.fixedToCamera = true;
 			
 			//	Lives counter
 			livesText = game.add.text(400,10 ,'lives : '+ livesC,{ 
@@ -293,7 +294,7 @@ body {
 		
 		function gotCoins(){
 			coinsC +=1;
-			coinsText.setText('Coins : ' + coinsC);
+			coinsText.setText(' : ' + coinsC);
 			coinS.play();
 		}
 		function lostAlife(){

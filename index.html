@@ -220,7 +220,7 @@ body {
     			}
 		}
 		
-		function bulletDestroy(bullets,goomba){
+		function bulletDestroy(bullet,goomba){
  			bullet.kill();
 			goombaDead();
 		}
@@ -249,6 +249,18 @@ body {
 			coin.kill();
 			gotCoins();
 		}
+		
+		function goombaDead(){
+			gotAkill();
+			goomba.animations.stop();
+			goomba.frame = 2;
+			goomba.body.enable = false;
+			player.body.velocity.y = -80;
+			game.time.events.add(Phaser.Timer.SECOND, function() {
+				goomba.kill();
+			});
+		}
+		
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {
 				goombaDead();
@@ -268,16 +280,7 @@ body {
 			scoreText.setText('Score : ' + score);
 			stompS.play();
 		}
-		function goombaDead(){
-			gotAkill();
-			goomba.animations.stop();
-			goomba.frame = 2;
-			goomba.body.enable = false;
-			player.body.velocity.y = -80;
-			game.time.events.add(Phaser.Timer.SECOND, function() {
-				goomba.kill();
-			});
-		}
+		
 		function gotCoins(){
 			coinsC +=1;
 			coinsText.setText('Coins : ' + coinsC);

@@ -108,7 +108,7 @@ body {
 			weapon = game.add.weapon(30, 'bullet');
 			weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
 			weapon.bulletSpeed = 600;
-			weapon.fireRate = 100;
+			weapon.fireRate = 10;
 			weapon.trackSprite(player, 16, 5, true);
 			fireButton = this.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
 			
@@ -207,6 +207,7 @@ body {
 				if(fireButton.isDown){
         				weapon.fire();
 					ammoC -= 1;
+					ammoText.setText('ammo : ' + ammoC);
     				}
 			}
 		}

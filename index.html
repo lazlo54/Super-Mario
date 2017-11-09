@@ -35,6 +35,8 @@ body {
 			this.load.tilemap('level', 'assets/MarioMap.json', null,Phaser.Tilemap.TILED_JSON);
 			
 			this.load.image('bullet','assets/bullet.png',);
+			this.load.image('heart','assets/heart.png');
+			this.load.image('ammoTex','assets/ammoTex.png');
 			
 			this.load.audio('bgm','audio/cs-go-bgm.ogg');
 			this.load.audio('coinS','audio/coin.wav');
@@ -123,7 +125,7 @@ body {
 			scoreText.fixedToCamera = true;
 			
 			//	Coin counter
-			coinPic = game.add.image(5,20,'coin');coinPic.scale.setTo(0.7,0.7);
+			coinPic = game.add.image(5,17,'coin');coinPic.scale.setTo(1.1,1.1);
 			coinsText = game.add.text(15,20, ' : 0',{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
@@ -132,19 +134,22 @@ body {
 			coinPic.fixedToCamera = true;
 			
 			//	Lives counter
+			heart = game.add.image(395,7,'heart');heart.scale.setTo(1.1,1.1);
 			livesText = game.add.text(400,10 ,'lives : '+ livesC,{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
 			livesText.fixedToCamera = true;
+			heart.fixedToCamera = true;
 			
 			//	ammo
-			ammoPic = game.add.image(395,20,'ammoSprite',8);ammoPic.scale.setTo(0.7,0.7);
+			ammoPic = game.add.image(395,17,'ammoTex');ammoPic.scale.setTo(1.1,1.1);
 			ammoText = game.add.text(405,20 , ' : '+ ammoC,{
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
 			ammoText.fixedToCamera = true;
+			ammoPic.fixedToCamera = true;
 			
 			//	Sounds
 			bgm = game.add.audio('bgm');

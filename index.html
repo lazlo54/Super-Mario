@@ -50,6 +50,7 @@ body {
 		var ammoC = 0;
 		var weapon;
 		var fireButton;
+		var isPressed = false;
 		
 		function create() {
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
@@ -203,7 +204,13 @@ body {
 				}
 			}
 			//shoot
-			if(fireButton.onDown === true && ammoC > 0){
+			if(fireButton.isDown){
+				isPressed = true;
+				game.time.events.add(Phaser.Timer.SECOND/2, function() {
+					isPressed = false;
+				});
+			}
+			if(isPressed === true && ammoC > 0){
         			weapon.fire();
 				ammoC -= 1;
 				ammoText.setText('ammo : ' + ammoC);

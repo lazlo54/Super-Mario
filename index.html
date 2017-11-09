@@ -148,8 +148,8 @@ body {
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
 			
-			game.physics.arcade.collide(player, ammoCrate, ammoCrateOverlap);
-			game.physics.arcade.collide(player, ammunition, ammoOverlap);
+			game.physics.arcade.overlap(player, ammoCrate, ammoCrateOverlap);
+			game.physics.arcade.overlap(player, ammunition, ammoOverlap);
 
 			if (player.body.enable) {
 				player.body.velocity.x = 0;

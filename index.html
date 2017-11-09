@@ -32,7 +32,7 @@ body {
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/soldier-mario.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
-			this.load.tilemap('level', 'assets/MapFinal3.json', null,Phaser.Tilemap.TILED_JSON);
+			this.load.tilemap('level', 'assets/MarioMap.json', null,Phaser.Tilemap.TILED_JSON);
 			
 			this.load.audio('bgm','audio/cs-go-bgm.ogg');
 			this.load.audio('coinS','audio/coin.wav');
@@ -66,7 +66,7 @@ body {
 			
 			ammoCrate = game.add.group();
 			ammoCrate.enableBody = true;
-			map.createFromTiles(22,null,'ammoCrate','stuff',ammoCrate);
+			map.createFromTiles(22,null,'ammoCrate','ammoTile',ammoCrate);
 			ammoCrate.callAll('animations.add', 'animations', 'shine', [0,1,2],3,true);
 			ammoCrate.callAll('animations.play','animations','shine');
 			ammoCrate.setAll('body.immovable',true);

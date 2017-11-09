@@ -45,6 +45,7 @@ body {
 			this.load.audio('deathS','audio/mission-failed.wav');
 			this.load.audio('shootS','audio/shootS.wav');
 			this.load.audio('jumpSound','audio/Jump.wav');
+			this.load.audio('ammoS','audio/ammoS.wav');
 		}
 		
 		var livesC = 3;
@@ -160,7 +161,7 @@ body {
 			lnl = game.add.audio('lnl');
 			deathS = game.add.audio('deathS');
 			shootS = game.add.audio('shootS');
-			
+			ammoS = game.add.audio('ammoS');
 			
 			//	Background game music
 			lnl.play();
@@ -229,7 +230,7 @@ body {
 				weapon.fire();
 				ammoText.setText(' : ' + ammoC);
 				ableToShoot = false;
-				game.time.events.add(Phaser.Timer.SECOND/2, function() {
+				game.time.events.add(Phaser.Timer.SECOND/1.5, function() {
 					ableToShoot = true;
 				});
     			}
@@ -252,6 +253,7 @@ body {
 		
 		function ammoOverlap(player, ammunition)
 		{
+			ammoS.play();
 			ammunition.kill();
 			ammoC += 30;
 			ammoText.setText(' : ' + ammoC);

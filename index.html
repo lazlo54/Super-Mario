@@ -168,7 +168,7 @@ body {
 			game.physics.arcade.overlap(player, ammunition, ammoOverlap);
 			
 			game.physics.arcade.overlap(weapon.bullets, goombas , bulletHit);
-			game.physics.arcade.overlap(weapon.bullets, map , bulletDestroy);
+			game.physics.arcade.collide(weapon.bullets, layer , bulletDestroy);
 			
 			if (player.body.enable)
 			{
@@ -215,13 +215,13 @@ body {
 				weapon.fire();
 				ammoText.setText('ammo : ' + ammoC);
 				ableToShoot = false;
-				game.time.events.add(Phaser.Timer.SECOND, function() {
+				game.time.events.add(Phaser.Timer.SECOND/2, function() {
 					ableToShoot = true;
 				});
     			}
 		}
 		
-		function bulletDestroy(bullets,layer){
+		function bulletDestroy(bullets,tiles){
 			bullets.kill();
 		}
 		

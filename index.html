@@ -318,10 +318,11 @@ body {
 		function lostAlife(){
 			livesC -=1;
 			livesText.setText(' : ' + livesC);
-			// reseting counters;
+			// resetting 
 			ammoC = 0;
 			score = 0;
 			coinsC = 0;
+			ableToShoot = true;
 		}
 		function theEnd(){
 			player.frame = 6;

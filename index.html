@@ -118,14 +118,14 @@ body {
 			fireButton = this.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
 			
 			//	Score counter			
-			scoreText = game.add.text(10, 10, "Score : 0", {
+			scoreText = game.add.text(10, 8, "Score : 0", {
            			font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
 			scoreText.fixedToCamera = true;
 			
 			//	Coin counter
-			coinPic = game.add.image(5,17,'coin');coinPic.scale.setTo(1.1,1.1);
+			coinPic = game.add.image(5,15,'coin');coinPic.scale.setTo(1.1,1.1);
 			coinsText = game.add.text(15,23, ' : 0',{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
@@ -135,7 +135,7 @@ body {
 			
 			//	Lives counter
 			heart = game.add.image(395,7,'heart');heart.scale.setTo(1.1,1.1);
-			livesText = game.add.text(405,13 ,' : '+ livesC,{ 
+			livesText = game.add.text(405,7 ,' : '+ livesC,{ 
 				font:"bold 10px Arial",
             			fill: "#ffffff"
 			});
@@ -263,6 +263,12 @@ body {
 				ammoSprite.animations.add('spawn', [1,2,3,4,5,6,7],8,false);
 				ammoSprite.animations.play('spawn');
 				game.physics.arcade.enable(ammoSprite);
+				
+				if (cursors.up.isDown && player.body.onFloor()){
+					player.body.velocity.y = -190;
+					player.animations.stop();
+					jumpS.play();
+				}
 			}
 		}
 			

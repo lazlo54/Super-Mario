@@ -78,14 +78,6 @@ body {
 			ammunition = game.add.group();
 			ammunition.enableBody = true;
 			
-			//	weapon
-			weapon = game.add.weapon(30, 'bullet');
-			weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-			weapon.bulletSpeed = 600;
-			weapon.fireRate = 100;
-			weapon.trackSprite(mario, 0, 0, true);
-			fireButton = this.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
-			
 			coins = game.add.group();
 			coins.enableBody = true;
 			map.createFromTiles(2, null, 'coin', 'stuff', coins);
@@ -111,6 +103,14 @@ body {
 			
 			game.camera.follow(player);
 			cursors = game.input.keyboard.createCursorKeys();
+			
+			//	weapon
+			weapon = game.add.weapon(30, 'bullet');
+			weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+			weapon.bulletSpeed = 600;
+			weapon.fireRate = 100;
+			weapon.trackSprite(player, 0, 0, true);
+			fireButton = this.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
 			
 			//	Score counter			
 			scoreText = game.add.text(10, 10, "Score : 0", {

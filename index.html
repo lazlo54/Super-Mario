@@ -204,15 +204,11 @@ body {
 				}
 			}
 			//shoot
-			if(fireButton.isDown){
-				isPressed = true;
-				game.time.events.add(Phaser.Timer.SECOND/2, function() {
-					isPressed = false;
-				});
-			}
-			if(isPressed === true && ammoC > 0){
+			if(fireButton.isDown && ammoC > 0){
         			weapon.fire();
-				ammoC -= 1;
+				game.time.events.add(Phaser.Timer.SECOND/2, function() {
+					ammoC -= 1;
+				});
 				ammoText.setText('ammo : ' + ammoC);
     			}
 		}

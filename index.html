@@ -80,6 +80,11 @@ body {
 			
 			//	weapon
 			weapon = game.add.weapon(30, 'bullet');
+			weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+			weapon.bulletSpeed = 600;
+			weapon.fireRate = 100;
+			weapon.trackSprite(mario, 0, 0, true);
+			fireButton = this.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
 			
 			coins = game.add.group();
 			coins.enableBody = true;
@@ -196,6 +201,10 @@ body {
 						player.frame = 12;
 				}
 			}
+			//shoot
+			if (fireButton.isDown){
+        			weapon.fire();
+    			}
 		}
 				
 		function ammoOverlap(player, ammunition)

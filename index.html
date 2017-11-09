@@ -40,10 +40,12 @@ body {
 			
 			this.load.audio('bgm','audio/cs-go-bgm.ogg');
 			this.load.audio('coinS','audio/coin.wav');
-			this.load.audio('jumpS','audio/jump.wav');
 			this.load.audio('stompS','audio/stomp.wav');
 			this.load.audio('lnl','audio/lock-n-load.wav');
 			this.load.audio('deathS','audio/mission-failed.wav');
+			this.load.audio('shootS','audio/shootS.wav');
+			this.load.audio('jumpS','audio/Jump.wav');
+			this.load.audio('landS','audio/Land.wav');
 		}
 		
 		var livesC = 3;
@@ -210,6 +212,9 @@ body {
 					player.body.velocity.y = -190;
 					player.animations.stop();
 					jumpS.play();
+					if(player.body.onFloor()){
+						land.play();	
+					}	
 				}
 				if (player.body.velocity.y != 0)
 				{
@@ -312,6 +317,10 @@ body {
 		function lostAlife(){
 			livesC -=1;
 			livesText.setText(' : ' + livesC);
+			// reseting counters;
+			ammoC = 0;
+			score = 0;
+			coinsC = 0;
 		}
 		function theEnd(){
 			player.frame = 6;

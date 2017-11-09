@@ -213,7 +213,7 @@ body {
 					player.animations.stop();
 					jumpS.play();
 					if(player.body.onFloor()){
-						land.play();	
+						landS.play();	
 					}	
 				}
 				if (player.body.velocity.y != 0)
@@ -226,6 +226,7 @@ body {
 			}
 			//shoot
 			if(fireButton.isDown && ammoC > 0 && ableToShoot == true){
+				shootS.play();
 				ammoC -= 1;
 				weapon.fire();
 				ammoText.setText(' : ' + ammoC);

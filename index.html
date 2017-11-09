@@ -44,7 +44,7 @@ body {
 			this.load.audio('lnl','audio/lock-n-load.wav');
 			this.load.audio('deathS','audio/mission-failed.wav');
 			this.load.audio('shootS','audio/shootS.wav');
-			this.load.audio('jumpS','audio/Jump.wav');
+			this.load.audio('jumpSound','audio/Jump.wav');
 			this.load.audio('landS','audio/Land.wav');
 		}
 		
@@ -211,7 +211,7 @@ body {
 				{
 					player.body.velocity.y = -190;
 					player.animations.stop();
-					jumpS.play();
+					jumpSound.play();
 					/*if(player.body.onFloor()){
 						landS.play();	
 					}*/	
@@ -273,7 +273,7 @@ body {
 				if (cursors.up.isDown && player.body.onFloor()){
 					player.body.velocity.y = -190;
 					player.animations.stop();
-					jumpS.play();
+					jumpSound.play();
 				}
 			}
 		}

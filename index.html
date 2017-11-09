@@ -204,7 +204,7 @@ body {
 			}
 			//shoot
 			if(ammoC > 0){
-				if(fireButton.isDown){
+				if(fireButton.onDown){
         				weapon.fire();
 					ammoC -= 1;
 					ammoText.setText('ammo : ' + ammoC);

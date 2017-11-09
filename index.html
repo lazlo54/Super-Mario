@@ -167,7 +167,7 @@ body {
 			game.physics.arcade.collide(player, ammoCrate, ammoCrateCollide);
 			game.physics.arcade.overlap(player, ammunition, ammoOverlap);
 			
-			game.physics.arcade.overlap(weapon, goombas,bulletDestroy);
+			game.physics.arcade.overlap(weapon.bullets, goombas,bulletDestroy);
 			
 			if (player.body.enable)
 			{
@@ -220,9 +220,16 @@ body {
     			}
 		}
 		
-		function bulletDestroy(bullet,goomba){
+		function bulletDestroy(player,goomba){
  			bullet.kill();
-			goombaDead();
+			gotAkill();
+			goomba.animations.stop();
+			goomba.frame = 2;
+			goomba.body.enable = false;
+			player.body.velocity.y = -80;
+			game.time.events.add(Phaser.Timer.SECOND, function() {
+				goomba.kill();
+			});
 		}
 		
 		function ammoOverlap(player, ammunition)
@@ -250,20 +257,16 @@ body {
 			gotCoins();
 		}
 		
-		function goombaDead(){
-			gotAkill();
-			goomba.animations.stop();
-			goomba.frame = 2;
-			goomba.body.enable = false;
-			player.body.velocity.y = -80;
-			game.time.events.add(Phaser.Timer.SECOND, function() {
-				goomba.kill();
-			});
-		}
-		
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {
-				goombaDead();
+				gotAkill();
+				goomba.animations.stop();
+				goomba.frame = 2;
+				goomba.body.enable = false;
+				player.body.velocity.y = -80;
+				game.time.events.add(Phaser.Timer.SECOND, function() {
+					goomba.kill();
+				});
 			} else {
 				if(livesC > 1){
 					lostAlife();
